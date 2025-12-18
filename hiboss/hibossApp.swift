@@ -38,22 +38,51 @@ struct hibossApp: App {
     
     var body: some Scene {
         WindowGroup {
-            JobDescriptionView()
-//            HomeView()
-//                .fullScreenCover(isPresented: $shouldShowLandingPage) {
-//                    LandingView()
-//                }
-//                .onAppear {
-//                    Task {
-//                        Auth.auth().addStateDidChangeListener { auth, user in
-//                            if user != nil {
-//                                print(user)
-//                            } else {
-//                                shouldShowLandingPage = true
-//                            }
-//                        }
-//                    }
-//                }
+            TabView {
+                HomeView()
+                    .tabItem {
+                        Label("dashboard", systemImage: "house")
+                    }
+                
+                SayHiTrackerView()
+                    .tabItem {
+                        Label("discover", systemImage: "globe")
+                    }
+                
+                MessagelistView ()
+                    .tabItem {
+                        Label("message", systemImage: "bubble")
+                    }
+                
+                SayHiTrackerView ()
+                    .tabItem {
+                        Label("me", systemImage: "person")
+                    }
+            }
         }
+    }
+}
+
+#Preview {
+    TabView {
+        HomeView()
+            .tabItem {
+                Label("dashboard", systemImage: "house")
+            }
+        
+        SayHiTrackerView()
+            .tabItem {
+                Label("discover", systemImage: "globe")
+            }
+        
+        MessagelistView ()
+            .tabItem {
+                Label("message", systemImage: "bubble")
+            }
+        
+        SayHiTrackerView ()
+            .tabItem {
+                Label("me", systemImage: "person")
+            }
     }
 }

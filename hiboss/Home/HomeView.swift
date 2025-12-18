@@ -114,15 +114,19 @@ struct CompanyCardView: View {
 class HomeViewModel: ObservableObject {
     var title: String = "Home"
     let fontSize: CGFloat = 20
-    
+    @Published var path = [CompanyNavgationPath]()
+}
+
+enum CompanyNavgationPath: Hashable {
+    case jobDetail
 }
 
 struct HomeView: View {
     
-    let vm = HomeViewModel()
+    @StateObject var vm = HomeViewModel()
     
     var body: some View {
-        NavigationStack {
+        NavigationStack(path: $vm.path) {
             ZStack {
                 LightBackgroundView()
                 VStack{
@@ -180,11 +184,20 @@ struct HomeView: View {
                     .padding(.leading, 20)
                     .padding(.top, 24)
                     CompanyCardView()
+                        .onTapGesture {
+                            print("aa")
+                            vm.path.append(.jobDetail)
+                        }
                     CompanyCardView()
                     Spacer()
                 }
             }
-            
+            .navigationDestination(for: CompanyNavgationPath.self) { route in
+                switch route {
+                case .jobDetail:
+                    JobDescriptionView()
+                }
+            }
             .navigationTitle("Home")
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
@@ -203,6 +216,7 @@ struct HomeView: View {
                     })
                 }
             }
+            
         }
         
     }
