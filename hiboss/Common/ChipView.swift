@@ -17,8 +17,9 @@ fileprivate struct RowWrapper: Identifiable {
 struct ChipView: View {
     
     var content: [String]
+    let padding: CGFloat = 28 
     
-    let backgroundColor = Color(red: 234/255, green: 242/255, blue: 1)
+    let backgroundColor = Color(hex: "#F4F6F8")
     
     private func textWidth(for text: String) -> CGFloat {
         let attribute: [NSAttributedString.Key: Any] = [.font: UIFont.systemFont(ofSize: 14)]
@@ -30,14 +31,13 @@ struct ChipView: View {
         var rows = [[String]]()
         var currentRow = [String]()
         var rowWidth: CGFloat = 0
-        let padding: CGFloat = 8
         let maxWidth: CGFloat = geo.size.width - 32
         
         for item in content {
             var itemWidth = textWidth(for: item)
             
             if currentRow.count > 1 {
-                itemWidth += padding
+                itemWidth += padding + +8
             }
             
             if rowWidth + itemWidth > maxWidth {
@@ -64,10 +64,12 @@ struct ChipView: View {
                         HStack(alignment: .center, spacing: 8) {
                             ForEach(row.row, id: \.self) { item in
                                 Text(item)
-                                    .padding([.top, .bottom], 4)
-                                    .padding([.leading, .trailing])
+                                    .font(.custom("PingFang", size: 17))
+                                    .foregroundStyle(Color(hex: "#999999"))
+                                    .padding(.vertical, 14)
+                                    .padding(.horizontal, padding)
                                     .background {
-                                        RoundedRectangle(cornerRadius: 8)
+                                        Capsule()
                                             .fill(backgroundColor)
                                     }
                             }

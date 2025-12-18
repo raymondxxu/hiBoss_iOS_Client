@@ -16,51 +16,51 @@ class LoginViewModel: ObservableObject {
     let fbAccessToken = "f70787016bc5b869181bff196c65aaed"
     
     func googleSignIn() {
-        guard let presentingViewController = (UIApplication.shared.connectedScenes.first as? UIWindowScene)?.windows.first?.rootViewController else { return }
-        guard let clientID = FirebaseApp.app()?.options.clientID else { return }
-        let config = GIDConfiguration(clientID: clientID)
-        GIDSignIn.sharedInstance.configuration = config
-        GIDSignIn.sharedInstance.signIn(withPresenting: presentingViewController) { result, error in
-            guard error == nil else {
-                debugPrint(error?.localizedDescription)
-                return
-            }
-            guard let user = result?.user,
-                  let idToken = user.idToken?.tokenString
-            else {
-                debugPrint("user is not aviable")
-                return
-            }
-            let credential = GoogleAuthProvider.credential(withIDToken: idToken,
-                                                           accessToken: user.accessToken.tokenString)
-            Auth.auth().signIn(with: credential) { (result, error) in
-                print(result)
-                print(error)
-                
-            }
-        }
+//        guard let presentingViewController = (UIApplication.shared.connectedScenes.first as? UIWindowScene)?.windows.first?.rootViewController else { return }
+//        guard let clientID = FirebaseApp.app()?.options.clientID else { return }
+//        let config = GIDConfiguration(clientID: clientID)
+//        GIDSignIn.sharedInstance.configuration = config
+//        GIDSignIn.sharedInstance.signIn(withPresenting: presentingViewController) { result, error in
+//            guard error == nil else {
+//                debugPrint(error?.localizedDescription)
+//                return
+//            }
+//            guard let user = result?.user,
+//                  let idToken = user.idToken?.tokenString
+//            else {
+//                debugPrint("user is not aviable")
+//                return
+//            }
+//            let credential = GoogleAuthProvider.credential(withIDToken: idToken,
+//                                                           accessToken: user.accessToken.tokenString)
+//            Auth.auth().signIn(with: credential) { (result, error) in
+//                print(result)
+//                print(error)
+//                
+//            }
+//        }
     }
     
     func facebookSignIn() {
-        let credential = FacebookAuthProvider.credential(withAccessToken: fbAccessToken)
-        LoginManager().logIn(permissions: ["public_profile", "email"], from: nil) { result, error in
-            if let err = error {
-                debugPrint(err.localizedDescription)
-            }
-            switch result {
-            case .none:
-                debugPrint("NONE")
-            case .some(let result):
-                if let tokenStr = result.token?.tokenString {
-                    let credential = FacebookAuthProvider.credential(withAccessToken: tokenStr)
-                    Auth.auth().signIn(with: credential) { (result, error) in
-                        print(result)
-                        print(error)
-                        
-                    }
-                }
-            }
-        }
+//        let credential = FacebookAuthProvider.credential(withAccessToken: fbAccessToken)
+//        LoginManager().logIn(permissions: ["public_profile", "email"], from: nil) { result, error in
+//            if let err = error {
+//                debugPrint(err.localizedDescription)
+//            }
+//            switch result {
+//            case .none:
+//                debugPrint("NONE")
+//            case .some(let result):
+//                if let tokenStr = result.token?.tokenString {
+//                    let credential = FacebookAuthProvider.credential(withAccessToken: tokenStr)
+//                    Auth.auth().signIn(with: credential) { (result, error) in
+//                        print(result)
+//                        print(error)
+//                        
+//                    }
+//                }
+//            }
+//        }
     }
     
 }
