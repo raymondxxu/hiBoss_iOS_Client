@@ -31,7 +31,7 @@ struct JobExpectationView: View {
                                 RoundedRectangle(cornerRadius: 10)
                                     .fill(Color(hex: "#3665EF"))
                             }
-                        Text("Partime time")
+                        Text("Part time")
                             .font(.custom("PingFang", size: 15))
                             .padding()
                             .foregroundStyle(.white)

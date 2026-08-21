@@ -189,15 +189,6 @@ struct SayHiTrackerView: View {
             }
             .navigationTitle("Say Hi Tracker")
             .navigationBarTitleDisplayMode(.inline)
-            .toolbar {
-                ToolbarItem(placement: .topBarLeading) {
-                    Button(action: { dismiss() }) {
-                        Image(systemName: "chevron.left")
-                            .font(.system(size: 17, weight: .semibold))
-                    }
-                    .accessibilityLabel("Back")
-                }
-            }
         }
     }
 }

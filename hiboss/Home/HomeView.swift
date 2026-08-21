@@ -121,6 +121,11 @@ enum CompanyNavgationPath: Hashable {
     case jobDetail
 }
 
+enum CompanyNavigationPath {
+    case jobDetail
+    case companyInfo
+}
+
 struct HomeView: View {
     
     @StateObject var vm = HomeViewModel()
@@ -200,6 +205,15 @@ struct HomeView: View {
             }
             .navigationTitle("Home")
             .navigationBarTitleDisplayMode(.inline)
+            .navigationDestination(for: CompanyNavigationPath.self) { route in
+                switch route {
+                case .jobDetail:
+                    JobDescriptionView()
+                        .environmentObject(vm)
+                case .companyInfo:
+                    CompanyInfoView()
+                }
+            }
             .toolbar {
                 ToolbarItem(placement: .topBarTrailing) {
                     Button(action: {

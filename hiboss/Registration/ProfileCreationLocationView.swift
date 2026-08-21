@@ -46,18 +46,18 @@ struct ProfileCreationLocationView: View {
                 ForEach(0..<3) { i in
                     VStack(alignment: .leading, spacing: 8) {
                         Text(String(localized: "profile.sub-district").capitalized)
-                        DropDownMenu(title: "Please select your province")
+                        DropDownMenu(fieldStr: "", title: "Please select your province")
                     }  .padding(.bottom, 32)
                         .offset(y: hight * 2 + 64)
                     VStack(alignment: .leading, spacing: 8) {
                         Text(String(localized: "profile.district").capitalized)
-                        DropDownMenu(title: "Please select your province")
+                        DropDownMenu(fieldStr: "", title: "Please select your province")
                             .zIndex(2)
                     }.offset(y: hight + 32)
                         .padding(.bottom, 32)
                     VStack(alignment: .leading, spacing: 8) {
                         Text(String(localized: "profile.province").capitalized)
-                        DropDownMenu(title: "Please select your province")
+                        DropDownMenu(fieldStr: "", title: "Please select your province")
                             .zIndex(3)
                     }.overlay{
                         GeometryReader { geo in
@@ -78,6 +78,3 @@ struct ProfileCreationLocationView: View {
     }
 }
 
-#Preview {
-    ProfileCreationLocationView()
-}

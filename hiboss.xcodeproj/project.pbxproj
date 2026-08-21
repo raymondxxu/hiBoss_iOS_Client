@@ -6,15 +6,6 @@
 	objectVersion = 77;
 	objects = {
 
-/* Begin PBXBuildFile section */
-		E104D94A2E80EB5C00A4CB83 /* GoogleSignIn in Frameworks */ = {isa = PBXBuildFile; productRef = E104D9492E80EB5C00A4CB83 /* GoogleSignIn */; };
-		E104D94C2E80EB5C00A4CB83 /* GoogleSignInSwift in Frameworks */ = {isa = PBXBuildFile; productRef = E104D94B2E80EB5C00A4CB83 /* GoogleSignInSwift */; };
-		E1402B212E692D47004904D6 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = E1402B202E692D47004904D6 /* FirebaseAuth */; };
-		E1402B232E692D79004904D6 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = E1402B222E692D79004904D6 /* FirebaseFirestore */; };
-		E1A29C882EA5FDDA00818156 /* FacebookCore in Frameworks */ = {isa = PBXBuildFile; productRef = E1A29C872EA5FDDA00818156 /* FacebookCore */; };
-		E1A29C8A2EA5FDDA00818156 /* FacebookLogin in Frameworks */ = {isa = PBXBuildFile; productRef = E1A29C892EA5FDDA00818156 /* FacebookLogin */; };
-/* End PBXBuildFile section */
-
 /* Begin PBXContainerItemProxy section */
 		E1402AFF2E692A68004904D6 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -74,12 +65,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E1402B212E692D47004904D6 /* FirebaseAuth in Frameworks */,
-				E1A29C882EA5FDDA00818156 /* FacebookCore in Frameworks */,
-				E1A29C8A2EA5FDDA00818156 /* FacebookLogin in Frameworks */,
-				E1402B232E692D79004904D6 /* FirebaseFirestore in Frameworks */,
-				E104D94A2E80EB5C00A4CB83 /* GoogleSignIn in Frameworks */,
-				E104D94C2E80EB5C00A4CB83 /* GoogleSignInSwift in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -148,12 +133,6 @@
 			);
 			name = hiboss;
 			packageProductDependencies = (
-				E1402B202E692D47004904D6 /* FirebaseAuth */,
-				E1402B222E692D79004904D6 /* FirebaseFirestore */,
-				E104D9492E80EB5C00A4CB83 /* GoogleSignIn */,
-				E104D94B2E80EB5C00A4CB83 /* GoogleSignInSwift */,
-				E1A29C872EA5FDDA00818156 /* FacebookCore */,
-				E1A29C892EA5FDDA00818156 /* FacebookLogin */,
 			);
 			productName = hiboss;
 			productReference = E1402AF12E692A67004904D6 /* hiboss.app */;
@@ -238,9 +217,6 @@
 			mainGroup = E1402AE82E692A67004904D6;
 			minimizedProjectReferenceProxies = 1;
 			packageReferences = (
-				E1402B1E2E692BD1004904D6 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
-				E104D9482E80EB5C00A4CB83 /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */,
-				E1A29C862EA5EFCC00818156 /* XCRemoteSwiftPackageReference "facebook-ios-sdk" */,
 			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = E1402AF22E692A67004904D6 /* Products */;
@@ -447,7 +423,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = 5WZPB645K9;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = hiboss/Info.plist;
@@ -456,8 +432,10 @@
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UIStatusBarStyle = "";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				IPHONEOS_DEPLOYMENT_TARGET = 18.6;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -467,9 +445,13 @@
 				PRODUCT_BUNDLE_IDENTIFIER = hiboss.raymondxxu;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -490,8 +472,10 @@
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UIStatusBarStyle = "";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				IPHONEOS_DEPLOYMENT_TARGET = 18.6;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -501,9 +485,13 @@
 				PRODUCT_BUNDLE_IDENTIFIER = hiboss.raymondxxu;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
@@ -615,66 +603,6 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCRemoteSwiftPackageReference section */
-		E104D9482E80EB5C00A4CB83 /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/google/GoogleSignIn-iOS";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 9.0.0;
-			};
-		};
-		E1402B1E2E692BD1004904D6 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 12.2.0;
-			};
-		};
-		E1A29C862EA5EFCC00818156 /* XCRemoteSwiftPackageReference "facebook-ios-sdk" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/facebook/facebook-ios-sdk";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 18.0.0;
-			};
-		};
-/* End XCRemoteSwiftPackageReference section */
-
-/* Begin XCSwiftPackageProductDependency section */
-		E104D9492E80EB5C00A4CB83 /* GoogleSignIn */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = E104D9482E80EB5C00A4CB83 /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */;
-			productName = GoogleSignIn;
-		};
-		E104D94B2E80EB5C00A4CB83 /* GoogleSignInSwift */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = E104D9482E80EB5C00A4CB83 /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */;
-			productName = GoogleSignInSwift;
-		};
-		E1402B202E692D47004904D6 /* FirebaseAuth */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = E1402B1E2E692BD1004904D6 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
-			productName = FirebaseAuth;
-		};
-		E1402B222E692D79004904D6 /* FirebaseFirestore */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = E1402B1E2E692BD1004904D6 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
-			productName = FirebaseFirestore;
-		};
-		E1A29C872EA5FDDA00818156 /* FacebookCore */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = E1A29C862EA5EFCC00818156 /* XCRemoteSwiftPackageReference "facebook-ios-sdk" */;
-			productName = FacebookCore;
-		};
-		E1A29C892EA5FDDA00818156 /* FacebookLogin */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = E1A29C862EA5EFCC00818156 /* XCRemoteSwiftPackageReference "facebook-ios-sdk" */;
-			productName = FacebookLogin;
-		};
-/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = E1402AE92E692A67004904D6 /* Project object */;
 }
