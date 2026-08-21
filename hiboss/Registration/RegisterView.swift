@@ -24,7 +24,7 @@ struct RegisterView: View {
         case profileCreationLocationView
     }
     
-    @EnvironmentObject var navVM: NavigationViewModel
+//    @EnvironmentObject var navVM: NavigationViewModel
     @ObservedObject var vm: RegisterViewModel = RegisterViewModel()
     
     var body: some View {
@@ -115,10 +115,10 @@ struct RegisterView: View {
                             .stroke(Color.gray.opacity(0.3), lineWidth: 1)
                             .frame(height: 48)
                     }
-                    CTAButton(action: {
-                        navVM.path.append(RegisterView.Route.profileCreationLocationView)
-                    }, title: "Register")
-                        .padding([.top, .bottom])
+//                    CTAButton(action: {
+//                        navVM.path.append(RegisterView.Route.profileCreationLocationView)
+//                    }, title: "Register")
+//                        .padding([.top, .bottom])
                 HStack {
                     Spacer()
                     VStack{
@@ -152,13 +152,13 @@ struct RegisterView: View {
             }
             Spacer()
         }.padding(16)
-            .navigationDestination(for: RegisterView.Route.self) { route in
-                switch route {
-                case .profileCreationLocationView:
-                    ProfileCreationLocationView()
-                }
-                
-            }
+//            .navigationDestination(for: RegisterView.Route.self) { route in
+//                switch route {
+//                case .profileCreationLocationView:
+////                    ProfileCreationLocationView()
+//                }
+//                
+//            }
     }
 }
 

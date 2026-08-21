@@ -10,7 +10,7 @@ import SwiftUI
 struct UserProfileContainerView: View {
     var body: some View {
         Rectangle()
-            .fill(Color(hex: "#3665EF"))
+            .fill(Color(uiColor: UIColor(red: 65/255, green: 100/255, blue: 230/255, alpha: 1)))
             .ignoresSafeArea()
         
     }

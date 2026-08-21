@@ -114,11 +114,21 @@ struct CompanyCardView: View {
 class HomeViewModel: ObservableObject {
     var title: String = "Home"
     let fontSize: CGFloat = 20
+<<<<<<< HEAD
     @Published var path = [CompanyNavgationPath]()
 }
 
 enum CompanyNavgationPath: Hashable {
     case jobDetail
+=======
+    @Published var path = [CompanyNavigationPath]()
+    
+>>>>>>> c6abba1 (new my profile page)
+}
+
+enum CompanyNavigationPath {
+    case jobDetail
+    case companyInfo
 }
 
 struct HomeView: View {
@@ -185,21 +195,36 @@ struct HomeView: View {
                     .padding(.top, 24)
                     CompanyCardView()
                         .onTapGesture {
+<<<<<<< HEAD
                             print("aa")
+=======
+>>>>>>> c6abba1 (new my profile page)
                             vm.path.append(.jobDetail)
                         }
                     CompanyCardView()
                     Spacer()
                 }
             }
+<<<<<<< HEAD
             .navigationDestination(for: CompanyNavgationPath.self) { route in
                 switch route {
                 case .jobDetail:
                     JobDescriptionView()
                 }
             }
+=======
+>>>>>>> c6abba1 (new my profile page)
             .navigationTitle("Home")
             .navigationBarTitleDisplayMode(.inline)
+            .navigationDestination(for: CompanyNavigationPath.self) { route in
+                switch route {
+                case .jobDetail:
+                    JobDescriptionView()
+                        .environmentObject(vm)
+                case .companyInfo:
+                    CompanyInfoView()
+                }
+            }
             .toolbar {
                 ToolbarItem(placement: .topBarTrailing) {
                     Button(action: {

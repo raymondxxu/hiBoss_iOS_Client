@@ -10,6 +10,8 @@ import MapKit
 
 struct JobDescriptionView: View {
     
+    @EnvironmentObject var containerVM: HomeViewModel
+    
     let position = MapCameraPosition.region(
         MKCoordinateRegion(
             center: CLLocationCoordinate2D(latitude: 49.2820, longitude: -123.1171),
@@ -95,6 +97,8 @@ struct JobDescriptionView: View {
                                                     opacity: 0.1))
                                 }
                         }
+                    }.onTapGesture {
+                        containerVM.path.append(.companyInfo)
                     }
                     Spacer()
                 }

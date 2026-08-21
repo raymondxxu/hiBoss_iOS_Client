@@ -12,102 +12,107 @@ extension Color {
         let hex = hex.trimmingCharacters(in: CharacterSet(charactersIn: "#"))
         var rgbValue: UInt64 = 0
         Scanner(string: hex).scanHexInt64(&rgbValue)
-
+        
         let r = Double((rgbValue & 0xFF0000) >> 16) / 255.0
         let g = Double((rgbValue & 0x00FF00) >> 8) / 255.0
         let b = Double(rgbValue & 0x0000FF) / 255.0
-
+        
         self.init(red: r, green: g, blue: b)
     }
 }
 
-fileprivate struct DropdownLabelStyle: LabelStyle {
+
+struct DropDownMenu: View {
     
-    let color = Color(red: 129/255, green: 136/255, blue: 152/255)
+    var fieldStr: String
+    var title: String
     
-    func makeBody(configuration: Configuration) -> some View {
-        HStack {
-            configuration.title
-                .font(.system(size: 16))
-                .foregroundStyle(color)
-                .frame(height: 48)
-                .frame(maxWidth: .infinity)
-                .padding(.leading)
-            Spacer()
-            configuration.icon
-                .foregroundStyle(color)
-                .padding(.trailing)
+    var body: some View {
+        VStack(alignment: .leading) {
+            Text(fieldStr)
+                .font(.custom("PingFang TC", size: 17.6))
+                .fontWeight(.semibold)
+                .padding(.bottom, 13)
+            HStack {
+                Text(title)
+                    .font(.custom("PingFang", size: 17.6))
+                    .foregroundStyle(Color(hex: "#999999"))
+                    .padding(.leading, 18)
+                Spacer()
+                Image(systemName: "chevron.down")
+                    .foregroundStyle(Color(hex: "#999999"))
+                    .padding(.trailing, 19)
+            }.padding(.vertical)
+                .background {
+                    RoundedRectangle(cornerRadius: 14)
+                        .fill(Color(hex: "#F4F6F8"))
+                }
         }
     }
 }
 
-struct DropDownMenu: View {
+struct ShortTextField: View {
     
-    let options = ["Bangkok", "Krabi", "Kanchanaburi", "Kalasin"]
-    let title: String
-    @State var selected: String = ""
-    @State var hight: CGFloat = 0.0
-    @State var shouldShowDropDown: Bool = false
-    let borderColor = Color(red: 223/255, green: 225/255, blue: 231/255)
+    var fieldStr: String
+    var title: String
+    @State var userInput: String = ""
     
     var body: some View {
-        HStack {
-            Label(title, systemImage: "chevron.down")
-                .labelStyle(DropdownLabelStyle())
-                .background {
-                    RoundedRectangle(cornerRadius: 12)
-                        .stroke(borderColor)
-                        .fill(.white)
-                        .shadow(color: Color(red: 0, green: 0, blue: 0, opacity: 0.1),
-                            radius: 4, x: 0, y: 4)
-                }
-                .onTapGesture {
-                    shouldShowDropDown.toggle()
-                }
-                .overlay {
-                    GeometryReader { pickerGeo in
-                        if shouldShowDropDown {
-                            VStack(alignment: .leading) {
-                                List(options, id: \.self) { item in
-                                    HStack{
-                                        Text(item)
-                                            .frame(height: 44)
-                                            .onTapGesture {
-                                                selected = item
-                                            }
-                                        Spacer()
-                                        if selected == item {
-                                            Image(systemName: "checkmark")
-                                        }
-                                    }
-                                    .listRowBackground(Color.clear)
-                                    .listRowSeparator(.hidden)
-                                }
-                                .background(.clear)
-                                .listStyle(.plain)
-                                .listRowSeparator(.hidden)
-                                .frame(height: 192)
-                                .zIndex(1000)
-                                .background {
-                                    RoundedRectangle(cornerRadius: 12)
-                                        .stroke(borderColor)
-                                        .fill(.white)
-                                }
-                                .onAppear {
-                                    hight = pickerGeo.frame(in: .global).height
-                                }
-                            }.padding(.top, 4)
-                                .zIndex(1000)
-                        }
-                    }.offset(x: 0, y: hight)
-                }
-            
-        }.frame(maxWidth: .infinity)
+        VStack(alignment: .leading) {
+            Text(fieldStr)
+                .font(.custom("PingFang TC", size: 17.6))
+                .fontWeight(.semibold)
+                .padding(.bottom, 13)
+            TextField(title, text: $userInput, prompt:
+                        Text("\(title) \(fieldStr) information")
+                .foregroundStyle(Color(hex: "#999999"))
+                .font(.custom("PingFang", size: 17.6)))
+            .padding(.leading, 18)
+            .padding(.vertical)
+            .background {
+                RoundedRectangle(cornerRadius: 14)
+                    .fill(Color(hex: "#F4F6F8"))
+            }
+        }
+    }
+}
+
+struct LongTextField: View {
+    
+    var fieldStr: String
+    var title: String
+    @State var userInput: String = ""
+    
+    var body: some View {
+        VStack(alignment: .leading) {
+            Text(fieldStr)
+                .font(.custom("PingFang TC", size: 17.6))
+                .fontWeight(.semibold)
+                .padding(.bottom, 13)
+            ZStack(alignment: .topLeading){
+                RoundedRectangle(cornerRadius: 14)
+                    .fill(Color(hex: "#F4F6F8"))
+                    .frame(height: 168)
+                TextField(title, text: $userInput, prompt:
+                            Text("\(title)")
+                            .font(.custom("PingFang", size: 17.6))
+                            .foregroundStyle(Color(hex: "#999999")))
+                .padding(.top)
+                .padding(.leading, 18)
+            }
+        }
     }
 }
 
 
 #Preview {
-    DropDownMenu(title: "Please select your province")
-        .padding()
+    VStack {
+        DropDownMenu(fieldStr: "Name",
+                     title: "Please select your name")
+        .padding(.bottom, 24)
+        ShortTextField(fieldStr: "School", title: "Please Enter")
+            .padding(.bottom, 24)
+        LongTextField(fieldStr: "Campus Experience",
+                      title: "Please Enter")
+    } .padding()
 }
