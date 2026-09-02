@@ -1,7 +1,11 @@
 {
   "images" : [
     {
+<<<<<<< HEAD
       "filename" : "HiBoss.png",
+=======
+      "filename" : "Gemini_Generated_Image_h2kphsh2kphsh2kp.png",
+>>>>>>> 56375b1 (new update)
       "idiom" : "universal",
       "platform" : "ios",
       "size" : "1024x1024"

@@ -123,12 +123,12 @@ struct CompanyInfoView: View {
                                 .fill(.white)
                         }
                 }
-                SayHiCompanyRowView()
-                    .padding()
-                    .background {
-                        RoundedRectangle(cornerRadius: 9)
-                            .fill(.white)
-                    }
+//                SayHiCompanyRowView()
+//                    .padding()
+//                    .background {
+//                        RoundedRectangle(cornerRadius: 9)
+//                            .fill(.white)
+//                    }
                    
                 Spacer()
                 
