@@ -7,6 +7,8 @@
 
 import SwiftUI
 
+
+
 struct SayHiTrackerGreetingRowView: View {
     var body: some View {
         HStack(spacing: 13) {
@@ -42,6 +44,9 @@ struct SayHiTrackerGreetingRowView: View {
 }
 
 struct SayHiCompanyRowView: View {
+    
+    @State var isForInterview: Bool = false
+    
     var body: some View {
         ZStack(alignment: .topTrailing) {
             Image(systemName: "bookmark")
@@ -97,33 +102,60 @@ struct SayHiCompanyRowView: View {
                                                     opacity: 0.1))
                                 }
                         }
+                        if isForInterview {
+                            HStack(alignment: .firstTextBaseline, spacing: 0) {
+                                Text("$18000")
+                                    .font(.custom("Futura", size: 17))
+                                    .foregroundStyle(Color(hex: "3665EF"))
+                                Text("/month")
+                                    .font(.custom("Futura", size: 12))
+                                    .foregroundStyle(Color(hex: "3665EF"))
+                            }
+                            
+                        }
                     }
                 }
-                VStack{
-                    HStack(alignment: .lastTextBaseline) {
-                        Image(systemName: "location.circle.fill")
-                            .frame(width: 14, height: 14)
-                        Text("Jing 'an District, Shanghai")
-                            .font(.custom("PingFang", size: 13))
+                if isForInterview {
+                    HStack {
                         Spacer()
-                    }.padding(.top, 8)
-                    HStack(alignment: .lastTextBaseline) {
-                        Image(systemName: "cablecar.fill")
-                            .frame(width: 14, height: 14)
-                        Text("MRT Banqpho 2.3km")
-                            .font(.custom("PingFang", size: 13))
-                        Spacer()
-                    }.padding(.top, 8)
-                    HStack(alignment: .firstTextBaseline, spacing: 0) {
-                        Spacer()
-                        Text("$18000")
-                            .font(.custom("Futura", size: 17))
-                            .foregroundStyle(Color(hex: "3665EF"))
-                        Text("/month")
-                            .font(.custom("Futura", size: 12))
-                            .foregroundStyle(Color(hex: "3665EF"))
+                        Button(action: {}, label: {
+                            Text("interviews")
+                                .font(Font.PingFang(with: 13.5))
+                                .foregroundStyle(.white)
+                        }).frame(maxWidth: 148.7, maxHeight: 40)
+                            .aspectRatio(3.7, contentMode: .fit)
+                            .background {
+                                RoundedRectangle(cornerRadius: 19.95)
+                                    .fill(.themeMain)
+                            }
                     }
-                }.padding(.top, 11)
+                } else {
+                    VStack{
+                        HStack(alignment: .lastTextBaseline) {
+                            Image(systemName: "location.circle.fill")
+                                .frame(width: 14, height: 14)
+                            Text("Jing 'an District, Shanghai")
+                                .font(.custom("PingFang", size: 13))
+                            Spacer()
+                        }.padding(.top, 8)
+                        HStack(alignment: .lastTextBaseline) {
+                            Image(systemName: "cablecar.fill")
+                                .frame(width: 14, height: 14)
+                            Text("MRT Banqpho 2.3km")
+                                .font(.custom("PingFang", size: 13))
+                            Spacer()
+                        }.padding(.top, 8)
+                        HStack(alignment: .firstTextBaseline, spacing: 0) {
+                            Spacer()
+                            Text("$18000")
+                                .font(.custom("Futura", size: 17))
+                                .foregroundStyle(Color(hex: "3665EF"))
+                            Text("/month")
+                                .font(.custom("Futura", size: 12))
+                                .foregroundStyle(Color(hex: "3665EF"))
+                        }
+                    }.padding(.top, 11)
+                }
             }
         }
     }
@@ -131,69 +163,54 @@ struct SayHiCompanyRowView: View {
 
 struct SayHiTrackerView: View {
     @Environment(\.dismiss) private var dismiss
+    @State var subViewOption = SegmentedOption.alreadySaidHi
     var body: some View {
         NavigationStack {
             ZStack {
                 LightBackgroundView()
                 VStack {
-                    ZStack {
-                        RoundedRectangle(cornerRadius: 14)
-                            .fill(.white)
-                            .frame(maxWidth: .infinity)
-                            .aspectRatio(402/112, contentMode: .fit)
-                            .padding([.leading, .trailing], 20)
-                        HStack(spacing: 10) {
-                            VStack {
-                                HStack {
-                                    Image("hi")
-                                        .resizable()
-                                        .frame(width: 21, height: 21)
-                                    Text("123")
-                                        .font(.custom("Futura", size: 28))
-                                }
-                                Text("Alreday said Hi")
-                                    .font(.custom("PingFang", size: 13))
-                            }
-                            VStack {
-                                HStack {
-                                    Image("star")
-                                        .resizable()
-                                        .frame(width: 21, height: 21)
-                                    Text("13")
-                                        .font(.custom("Futura", size: 28))
-                                }
-                                Text("Collected positions")
-                                    .font(.custom("PingFang", size: 13))
-                            }
-                            VStack {
-                                HStack {
-                                    Image("doc")
-                                        .resizable()
-                                        .frame(width: 21, height: 21)
-                                    Text("123")
-                                        .font(.custom("Futura", size: 28))
-                                }
-                                Text("Pending matters")
-                                    .font(.custom("PingFang", size: 13))
-                            }
+                    SegmentedControl(){ newValue in
+                        subViewOption = newValue
+                    }.padding(.bottom, 18)
+                    if subViewOption == .pendingMatters {
+                        HStack {
+                            CustomTabRow()
+                                .padding([.leading, .top])
+                            Spacer()
                         }
                     }
                     List {
-//                        SayHiTrackerGreetingRowView()
-//                        SayHiTrackerGreetingRowView()
-                        SayHiCompanyRowView()
-                        SayHiCompanyRowView()
+                        if subViewOption == .alreadySaidHi {
+                            SayHiTrackerGreetingRowView()
+                            SayHiTrackerGreetingRowView()
+                        } else if subViewOption == .collectedPosition {
+                            SayHiCompanyRowView()
+                            SayHiCompanyRowView()
+                        } else {
+                            SayHiCompanyRowView(isForInterview: true)
+                            SayHiCompanyRowView(isForInterview: true)
+                        }
                     }.scrollContentBackground(.hidden)
-                        Spacer()
+                        .contentMargins(.top, 0, for: .scrollContent)
+                    Spacer()
                 }
             }
             .navigationTitle("Say Hi Tracker")
             .navigationBarTitleDisplayMode(.inline)
+            
         }
     }
 }
 
 #Preview {
     SayHiTrackerView()
+}
+
+#Preview {
+    SayHiCompanyRowView()
+}
+
+#Preview {
+    SayHiCompanyRowView(isForInterview: true)
 }
 

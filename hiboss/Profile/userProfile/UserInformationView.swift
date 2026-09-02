@@ -122,7 +122,7 @@ struct UserInformationView: View {
     }
 }
 
-struct UserInforViewWithContainer: View {
+struct UserInfoViewWithContainer: View {
     var body: some View {
         ZStack {
             UserProfileContainerView()
@@ -138,5 +138,5 @@ struct UserInforViewWithContainer: View {
 
 
 #Preview {
-    UserInforViewWithContainer()
+    UserInfoViewWithContainer()
 }

@@ -9,7 +9,6 @@ import SwiftUI
 
 struct CompanyInfoView: View {
     
-    
     var body: some View {
         ZStack {
             LightBackgroundView()

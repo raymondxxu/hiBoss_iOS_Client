@@ -41,22 +41,22 @@ struct hibossApp: App {
             TabView {
                 HomeView()
                     .tabItem {
-                        Label("dashboard", systemImage: "house")
+                        Label("dashboard", image: "dashboard")
                     }
                 
                 SayHiTrackerView()
                     .tabItem {
-                        Label("discover", systemImage: "globe")
+                        Label("discover", image: "discover")
                     }
                 
-                MessagelistView ()
+                MessageListView()
                     .tabItem {
-                        Label("message", systemImage: "bubble")
+                        Label("message", image: "message")
                     }
                 
-                SayHiTrackerView ()
+                MyProfile()
                     .tabItem {
-                        Label("me", systemImage: "person")
+                        Label("me", image: "me")
                     }
             }
         }
@@ -67,22 +67,19 @@ struct hibossApp: App {
     TabView {
         HomeView()
             .tabItem {
-                Label("dashboard", systemImage: "house")
+                Label("dashboard", image: "dashboard")
             }
-        
         SayHiTrackerView()
             .tabItem {
-                Label("discover", systemImage: "globe")
+                Label("discover", image: "discover")
             }
-        
-        MessagelistView ()
+        MessageListView()
             .tabItem {
-                Label("message", systemImage: "bubble")
+                Label("message", image: "message")
             }
-        
-        SayHiTrackerView ()
+        MyProfile()
             .tabItem {
-                Label("me", systemImage: "person")
+                Label("me", image: "me")
             }
     }
 }

@@ -114,11 +114,7 @@ struct CompanyCardView: View {
 class HomeViewModel: ObservableObject {
     var title: String = "Home"
     let fontSize: CGFloat = 20
-    @Published var path = [CompanyNavgationPath]()
-}
-
-enum CompanyNavgationPath: Hashable {
-    case jobDetail
+    @Published var path = [CompanyNavigationPath]()
 }
 
 enum CompanyNavigationPath {
@@ -195,12 +191,6 @@ struct HomeView: View {
                         }
                     CompanyCardView()
                     Spacer()
-                }
-            }
-            .navigationDestination(for: CompanyNavgationPath.self) { route in
-                switch route {
-                case .jobDetail:
-                    JobDescriptionView()
                 }
             }
             .navigationTitle("Home")

@@ -7,10 +7,17 @@
 
 import SwiftUI
 let buttonColor = Color(red: 0.01, green: 0.77, blue: 0.43)
+enum MyProfilePath: Hashable {
+    case sayHiTracker
+    case userProfile
+}
 
 struct MyProfile: View {
+    
+    @State var myProfilePath = [MyProfilePath]()
+    
     var body: some View {
-        NavigationStack{
+        NavigationStack(path: $myProfilePath) {
             ZStack {
                 LightBackgroundView()
                 VStack(alignment: .leading) {
@@ -76,47 +83,14 @@ struct MyProfile: View {
                                 }
                             }
                     }.padding(.top, 23)
-                    HStack(spacing: 10) {
-                        VStack {
-                            HStack {
-                                Image("hi")
-                                    .resizable()
-                                    .frame(width: 21, height: 21)
-                                Text("123")
-                                    .font(.custom("Futura", size: 28))
-                            }
-                            Text("Alreday said Hi")
-                                .font(.custom("PingFang", size: 13))
-                        }
-                        VStack {
-                            HStack {
-                                Image("star")
-                                    .resizable()
-                                    .frame(width: 21, height: 21)
-                                Text("13")
-                                    .font(.custom("Futura", size: 28))
-                            }
-                            Text("Collected positions")
-                                .font(.custom("PingFang", size: 13))
-                        }
-                        VStack {
-                            HStack {
-                                Image("doc")
-                                    .resizable()
-                                    .frame(width: 21, height: 21)
-                                Text("123")
-                                    .font(.custom("Futura", size: 28))
-                            }
-                            Text("Pending matters")
-                                .font(.custom("PingFang", size: 13))
-                        }
+                    SegmentedControl(){ newValue in
+                        print(newValue)
                     }
-                    .padding()
+                    .frame(maxWidth: .infinity)
                     .background {
                         RoundedRectangle(cornerRadius: 18.78)
                             .fill(.white)
-                    }
-                    .frame(maxWidth: .infinity)
+                    }.padding(.bottom, 18)
                     VStack{
                             HStack {
                                 Label.init("Notification", systemImage: "bell")
@@ -162,7 +136,6 @@ struct MyProfile: View {
                     }
                     .padding()
                     .frame(maxWidth: .infinity)
-                    
                     .background {
                         RoundedRectangle(cornerRadius: 18.78)
                             .fill(.white)
@@ -170,11 +143,18 @@ struct MyProfile: View {
                     }
                     Spacer()
                 }.padding([.leading, .trailing], 31)
+            }.navigationDestination(for: MyProfilePath.self) { dest in
+                switch dest {
+                case .sayHiTracker:
+                    SayHiTrackerView()
+                case .userProfile:
+                    UserInfoViewWithContainer()
+                }
             }
             .toolbar {
                 ToolbarItem(placement: .topBarTrailing) {
                     Button(action: {
-                        print("search")
+                        myProfilePath.append(.userProfile)
                     }, label: {
                         Image(systemName: "gear")
                     })
