@@ -8,6 +8,9 @@
 import SwiftUI
 
 struct UserInformationView: View {
+    
+    @Environment(NavigationRouter.self) private var router
+    
     var body: some View {
         ScrollView {
             VStack(alignment: .leading) {
@@ -102,7 +105,7 @@ struct UserInformationView: View {
                     .foregroundStyle(Color(hex: "#999999"))
                     .padding(.top, 8)
                 Button(action: {
-                    
+                    router.myProfilePath.append(.userEducationProfile)
                 }, label: {
                     Text("Next Step")
                         .font(.custom("PingFang", size: 18))

@@ -39,12 +39,12 @@ struct hibossApp: App {
     var body: some Scene {
         WindowGroup {
             TabView {
-                HomeView()
+                DashboardView()
                     .tabItem {
                         Label("dashboard", image: "dashboard")
                     }
                 
-                SayHiTrackerView()
+                DiscoverView()
                     .tabItem {
                         Label("discover", image: "discover")
                     }
@@ -65,18 +65,21 @@ struct hibossApp: App {
 
 #Preview {
     TabView {
-        HomeView()
+        DashboardView()
             .tabItem {
                 Label("dashboard", image: "dashboard")
             }
-        SayHiTrackerView()
+        
+        DiscoverView()
             .tabItem {
                 Label("discover", image: "discover")
             }
+        
         MessageListView()
             .tabItem {
                 Label("message", image: "message")
             }
+        
         MyProfile()
             .tabItem {
                 Label("me", image: "me")

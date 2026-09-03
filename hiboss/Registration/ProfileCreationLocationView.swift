@@ -78,3 +78,6 @@ struct ProfileCreationLocationView: View {
     }
 }
 
+#Preview {
+    ProfileCreationLocationView(selection: "a", shouldShowList: true, hight: 123)
+}
